@@ -1,2 +1,4 @@
-calculate_orientations_in_roi('Rat24_0396.bmp')
-
+files = dir('H:\cygwin\home\matthew.g\images\Rat24\HiRes\originals\');
+for file = 3:length(files)
+    calculate_orientations_in_roi(files(file).name);
+end
