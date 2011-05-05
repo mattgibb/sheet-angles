@@ -1,4 +1,4 @@
-function calculate_orientations_in_roi(image_name, roi)
+function calculate_orientations_in_roi(image_name, region_name)
 fprintf('Reading original file\n')
 im=imread(['H:\cygwin\home\matthew.g\images\Rat24\HiRes\originals\' image_name]);
 f1=figure;
@@ -110,10 +110,7 @@ figure
 imagesc(e)
 title('e parameter in clefts')
 plot_angle_against_e(anglesg,e);
-mat_name = [image_name '_' num2str(rect(1)) ...
-                       '_' num2str(rect(2)) ...
-                       '_' num2str(rect(3)) ...
-                       '_' num2str(rect(4)) '.mat'];
+mat_name = [image_name '_' region_name '.mat'];
 mat_path = ['H:\cygwin\home\matthew.g\orientations\Rat24\' mat_name ];
 save(mat_path,'anglesg','e','ref_angle','rect');
 end
