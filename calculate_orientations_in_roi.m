@@ -7,7 +7,7 @@ axis equal; axis tight
 title('Select region of interest');
 
 % im2 = im( 7500:11500, 9000:15000, 2);
-im2=imcrop(im);
+[im2, rect] = imcrop(im);
 close(f1);
 im2=im2(:,:,2);
 im2=downsample2(im2);
@@ -110,6 +110,12 @@ figure
 imagesc(e)
 title('e parameter in clefts')
 plot_angle_against_e(anglesg,e);
+mat_name = [image_name '_' num2str(rect(1)) ...
+                       '_' num2str(rect(2)) ...
+                       '_' num2str(rect(3)) ...
+                       '_' num2str(rect(4)) '.mat'];
+mat_path = ['H:\cygwin\home\matthew.g\orientations\Rat24\' mat_name ];
+save(mat_path,'anglesg','e','ref_angle','rect');
 end
 
 function plot_angle_against_e(anglesg,e)
