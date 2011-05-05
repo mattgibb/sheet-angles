@@ -100,7 +100,7 @@ title('After opening')
 anglesg(clefts==0)=0;
 figure
 imagesc(anglesg)
-title('Gaussian-smoothed angles')
+title('Gaussian-smoothed angles in clefts')
 
 dist_epi=bwdist(mask3==2);
 dist_endo=bwdist(mask3==1);
@@ -109,7 +109,10 @@ e(clefts==0)=0;
 figure
 imagesc(e)
 title('e parameter in clefts')
+plot_angle_against_e(anglesg,e);
+end
 
+function plot_angle_against_e(anglesg,e)
 er=e;
 er(e>0)=round(er(e>0)*99+1);
 e_avg=zeros(1,100);
