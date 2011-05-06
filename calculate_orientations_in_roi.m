@@ -110,25 +110,19 @@ e(clefts==0)=0;
 figure
 imagesc(e)
 title('e parameter in clefts')
-plot_angle_against_e(anglesg,e);
+[angles_mean,angles_std] = angle_bins(anglesg, e);
+plot_angle_distribution(angles_mean,angles_std);
 mat_name = [image_name '_' region_name '.mat'];
 mat_path = ['H:\cygwin\home\matthew.g\orientations\Rat24\' mat_name ];
 save(mat_path,'anglesg','e','ref_angle','rect');
 end
 
-function plot_angle_against_e(anglesg,e)
-er=e;
-er(e>0)=round(er(e>0)*99+1);
-e_avg=zeros(1,100);
-for v=1:100
-    angles_avg(v)=mean(anglesg(er(:)==v));
-    angles_std(v)=std(anglesg(er(:)==v));
-end
+function plot_angle_distribution(angles_mean,angles_std)
 figure
-plot(0.01:0.01:1,angles_avg)
+plot(0.01:0.01:1,angles_mean)
 hold
-plot(0.01:0.01:1,angles_avg+angles_std,'r')
-plot(0.01:0.01:1,angles_avg-angles_std,'r')
+plot(0.01:0.01:1,angles_mean+angles_std,'r')
+plot(0.01:0.01:1,angles_mean-angles_std,'r')
 xlabel('Relative distance to boundary');
 ylabel('Angle with respect to main axis');
 end
