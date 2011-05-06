@@ -48,24 +48,25 @@ f1=figure;
 %subplot(1,2,1)
 imagesc(mask3)
 impixelinfo
-f2=figure
+f2=figure;
 imagesc(mask3)
 title('Select all regions corresponding to background');
 mask3=uint8(bwselect);
 title('Select all regions corresponding to cavity');
 mask4=uint8(bwselect);
-mask3(mask4==1)=2;
 close(f1);
-imagesc(mask3)
+close(f2);
+mask3(mask4==1)=2;
 
 
 orient_test=calculate_orientation_ST_2D(im2,3,11, ~mask3);
 
 %Select the main orientation of the tissue
-figure
+f3 = figure;
 imagesc(mask3)
 title('Select two point to mark the main orientation of the structure')
 [x,y] = ginput(2);
+close(f3);
 %ref_vector=[y(2)-y(1) x(1)-x(2)];
 ref_vector=[x(2)-x(1) y(2)-y(1)];
 ref_vector=ref_vector/norm(ref_vector);

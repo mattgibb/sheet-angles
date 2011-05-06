@@ -11,7 +11,7 @@ files = {
     'Rat24_0556.bmp'
     'Rat24_0576.bmp'
     'Rat24_0595.bmp'
-    }
+    };
 
 for file = 1:length(files)
     calculate_orientations_in_roi(files{file}, 'upper_septum');
