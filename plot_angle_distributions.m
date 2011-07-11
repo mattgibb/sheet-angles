@@ -1,10 +1,10 @@
 clear
 
 % retrieve file names
-mat_dir = 'H:\cygwin\home\matthew.g\orientations\Rat24\';
-mat_files = dir(mat_dir);
+mat_dir = 'H:\cygwin\home\matthew.g\orientations\Rat28\';
+mat_files = dir([mat_dir '*lower_free_wall.mat']);
 mat_files = {mat_files.name};
-mat_files = mat_files(3:end);
+%mat_files = mat_files(3:end);
 
 % set up figure
 figure
