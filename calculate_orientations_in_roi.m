@@ -1,6 +1,6 @@
-function calculate_orientations_in_roi(image_name, region_name)
+function calculate_orientations_in_roi(data_set, image_name, region_name)
 fprintf('Reading original file\n')
-im=imread(['H:\cygwin\home\matthew.g\images\Rat24\HiRes\originals\' image_name]);
+im=imread(['H:\cygwin\home\matthew.g\images\' data_set '\HiRes\downsamples_1\' image_name]);
 f1=figure;
 imagesc(im)
 axis equal; axis tight
@@ -113,7 +113,7 @@ title('e parameter in clefts')
 [angles_mean,angles_std] = angle_bins(anglesg, e);
 plot_angle_distribution(angles_mean,angles_std);
 mat_name = [image_name '_' region_name '.mat'];
-mat_path = ['H:\cygwin\home\matthew.g\orientations\Rat24\' mat_name ];
+mat_path = ['H:\cygwin\home\matthew.g\orientations\' data_set '\' mat_name ];
 save(mat_path,'anglesg','e','ref_angle','rect');
 end
 

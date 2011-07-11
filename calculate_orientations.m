@@ -14,5 +14,5 @@ files = {
     };
 
 for file = 1:length(files)
-    calculate_orientations_in_roi(files{file}, 'upper_septum');
+    calculate_orientations_in_roi('Rat28', files{file}, 'upper_free_wall');
 end
