@@ -78,9 +78,6 @@ angles(angles > pi/2) = angles(angles > pi/2) - pi;
 
 angles(mask3>0)=0;
 
-%Filter the angles to get a smoother representation
-anglesg=gaussian_filter(angles,21,8);
-
 %Select only clefts
 cleft_thres = 180;  %Select the best threshold for clefts
 clefts=zeros(size(im2));
@@ -100,7 +97,7 @@ title('After opening')
 
 anglesg(clefts==0)=0;
 figure
-imagesc(anglesg)
+imagesc(angles)
 title('Gaussian-smoothed angles in clefts')
 
 dist_epi=bwdist(mask3==2);
@@ -110,11 +107,11 @@ e(clefts==0)=0;
 figure
 imagesc(e)
 title('e parameter in clefts')
-[angles_mean,angles_std] = angle_bins(anglesg, e);
+[angles_mean,angles_std] = angle_bins(angles, e);
 plot_angle_distribution(angles_mean,angles_std);
 mat_name = [image_name '_' region_name '.mat'];
 mat_path = ['H:\cygwin\home\matthew.g\orientations\' data_set '\' mat_name ];
-save(mat_path,'anglesg','e','ref_angle','rect');
+save(mat_path,'angles','e','ref_angle','rect');
 end
 
 function plot_angle_distribution(angles_mean,angles_std)
