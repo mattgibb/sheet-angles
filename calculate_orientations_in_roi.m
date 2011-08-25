@@ -96,7 +96,7 @@ title('After opening')
 angles(clefts==0)=0;
 figure
 imagesc(angles)
-title('Gaussian-smoothed angles in clefts')
+title('Angles in clefts')
 
 dist_epi=bwdist(background_cavity_image==2);
 dist_endo=bwdist(background_cavity_image==1);
@@ -105,21 +105,9 @@ e(~clefts)=0;
 figure
 imagesc(e)
 title('e parameter in clefts')
-[angles_mean,angles_std] = angle_bins(angles, e);
-plot_angle_distribution(angles_mean,angles_std);
 
 % save results
 mat_name = [slice_name '.bmp_' region_name '.mat'];
 mat_path = ['H:\cygwin\home\matthew.g\orientations\' data_set '\' mat_name ];
 save(mat_path,'angles','e','ref_angle','rect');
-end
-
-function plot_angle_distribution(angles_mean,angles_std)
-figure
-plot(0.01:0.01:1,angles_mean)
-hold
-plot(0.01:0.01:1,angles_mean+angles_std,'r')
-plot(0.01:0.01:1,angles_mean-angles_std,'r')
-xlabel('Relative distance to boundary');
-ylabel('Angle with respect to main axis');
 end
