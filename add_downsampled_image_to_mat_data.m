@@ -22,7 +22,7 @@ for slice_index = 1:length(slices)
         r=downsample2(im(:,:,1));
         g=downsample2(im(:,:,2));
         b=downsample2(im(:,:,3));
-        im = cat(3,r,g,b);
+        im = uint8(cat(3,r,g,b));
         
         % save downsampled image in mat_data
         mat_data.image = im;
