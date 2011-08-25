@@ -15,15 +15,4 @@ angles = angles - mat_data.ref_angle;
 % keep angles within bounds of +/- pi/2
 angles(angles < -pi/2) = angles(angles < -pi/2) + pi;
 angles(angles > pi/2) = angles(angles > pi/2) - pi;
-
-figure
-subplot(1,3,1);
-imagesc(mat_data.e)
-title('e parameter in clefts')
-subplot(1,3,2);
-imagesc(angles)
-title('angles in clefts')
-subplot(1,3,3);
-imagesc(coherences)
-title('coherences in clefts')
 end
